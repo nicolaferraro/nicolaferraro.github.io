@@ -20,7 +20,8 @@ description: > # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
 #url: "https://www.nicolaferraro.me" # the base hostname & protocol for your site
 #url: "http://localhost:4000"
-url: "https://nicolaferraro.github.io"
+#url: "https://nicolaferraro.github.io"
+#url: {{ site.github.url}}
 twitter_username: ni_ferraro
 github_username:  nicolaferraro
 
