@@ -1,5 +1,4 @@
 ---
-layout: post
 title:  "Spash - Organizing your Big Data with SSH and Bash"
 date:   2016-04-16 17:29:32 +0200
 tags: [Apache Hadoop, Apache Spark, Bash, HDFS, Spash]
@@ -19,7 +18,7 @@ Clients can connect using the OS native terminal application, or [Putty](http://
 
 The Spash daemon will emulate a Unix OS and leverage the power of Spark to perform efficient computations on distributed data.
 
-![Spash Architecture]({{ site.url }}/assets/spash.png)
+![Spash Architecture](/images/spash.png)
 
 ## The World Before Spash
 For those who don’t remember the classic way of doing simple operations on HDFS, here’s a reminder:
