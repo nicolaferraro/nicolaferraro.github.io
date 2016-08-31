@@ -1,9 +1,12 @@
 ---
 title:  "Creating a Telegram Bot in 5 minutes with Apache Camel"
-date:   2016-05-27 17:29:32 +0200
+modified: 2016-08-31 12:00:00 +0200
+last_modified_at: 2016-08-31 12:00:00 +0200
 tags: [Apache Camel, JBoss Fuse, Microservices, Spring Boot, Telegram]
+categories: [Dev]
 header:
     image: post-camel-telegram.png
+    teaser: post-camel-telegram.png
 ---
 Recently, I started contributing to open source software of the Apache Software Foundation and I developed
 **camel-telegram**, a component that allows camel based applications to exchange data using the Telegram messaging network.

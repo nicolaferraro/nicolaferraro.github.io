@@ -1,5 +1,7 @@
 ---
 title:  println("Hello World!")
-date:   2016-02-14 17:29:32 +0200
+modified: 2016-08-31 12:00:00 +0200
+last_modified_at: 2016-08-31 12:00:00 +0200
+categories: [News]
 ---
 Welcome to my new blog. Cool things are coming up...

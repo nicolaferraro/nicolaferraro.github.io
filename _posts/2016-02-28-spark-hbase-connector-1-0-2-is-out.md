@@ -1,9 +1,12 @@
 ---
 title:  "Spark-HBase-Connector 1.0.2 is out"
-date:   2016-02-28 17:29:32 +0200
+modified: 2016-08-31 12:00:00 +0200
+last_modified_at: 2016-08-31 12:00:00 +0200
 tags: [Apache HBase, Apache Spark, Scala]
+categories: [News]
 header:
     image: post-logo-spark.png
+    teaser: post-logo-spark.png
 ---
 The Spark-HBase-Connector project started as a 3-days programming marathon I made last year. At home, with the flu. 
 Now it is becoming one of the most popular drivers to read/write data to Apache HBase from Spark.

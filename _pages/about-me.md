@@ -2,7 +2,8 @@
 title: "About me"
 permalink: /about-me/
 ---
-![Red Hat Logo](/images/red-hat-logo.png)
+
+![Red Hat Logo](/images/red-hat-logo.png) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![Apache Software Foundation Logo](/images/asf-logo.png)  
 
 I’m a senior software engineer at Red Hat, writing open source software for fun. They also pay me for that.
 
