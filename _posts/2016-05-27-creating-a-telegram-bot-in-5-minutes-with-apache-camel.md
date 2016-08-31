@@ -5,12 +5,12 @@ tags: [Apache Camel, JBoss Fuse, Microservices, Spring Boot, Telegram]
 ---
 Recently, I started contributing to open source software of the Apache Software Foundation and I developed
 **camel-telegram**, a component that allows camel based applications to exchange data using the Telegram messaging network.
-It will be released as of **Apache Camel 2.18**. The full documentation is available in the [Camel manual](http://camel.apache.org/telegram.html).
-
+It will be released as of Apache Camel 2.18.
 
 The component is targeted to enterprise applications, to let them route chat messages within their ESB and communicate with users in a novel way.
 Camel is a widely used integration layer, that forms the basis of production-grade enterprise platforms such as [JBoss Fuse](http://www.jboss.org/products/fuse/overview/).
 But there exists also a simpler and more ludic way of using it, to create a reactive **messaging Bot**. I’ll explain how to create such a bot with a 5-mins step by step guide.
+The full documentation is available in the [Camel manual](http://camel.apache.org/telegram.html).
 
 ## Creating the Telegram Bot
 Before getting into the code, you first need to create the bot.
