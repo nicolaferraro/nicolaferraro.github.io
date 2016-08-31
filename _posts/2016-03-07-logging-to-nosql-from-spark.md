@@ -2,6 +2,8 @@
 title:  "Logging to a NoSQL DB from Spark"
 date:   2016-03-07 17:29:32 +0200
 tags: [Apache Log4j, Apache Phoenix, Apache Spark, Docker, Scala]
+header:
+    image: post-phoenix-logo.png
 ---
 Logging effectively is often a hard task in standard applications. But when the application runs in a distributed environment, for instance, a Spark job in a big YARN cluster, 
 it becomes ten times harder.

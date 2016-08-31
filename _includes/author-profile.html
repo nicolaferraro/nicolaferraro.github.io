@@ -6,6 +6,12 @@
 
 <div itemscope itemtype="http://schema.org/Person">
 
+  {% if page.header.image %}
+    <div class="header__image">
+      <img src="{{ page.header.image | prepend: "/images/" | prepend: base_path }}" class="header_image" alt="{{page.title}}">
+    </div>
+  {% endif %}
+
   <div class="author__avatar">
     {% if author.avatar contains "://" %}
     	<img src="{{ author.avatar }}" alt="{{ author.name }}">

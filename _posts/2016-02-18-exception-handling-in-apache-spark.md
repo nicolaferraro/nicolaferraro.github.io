@@ -2,6 +2,9 @@
 title:  "Exception Handling in Apache Spark"
 date:   2016-02-18 17:29:32 +0200
 tags: [Apache Spark, Scala]
+header:
+    image: post-logo-spark.png
+    teaser: post-logo-spark.png
 ---
 Apache Spark is a fantastic framework for writing highly scalable applications. 
 Data and execution code are spread from the driver to tons of worker machines for parallel processing. 

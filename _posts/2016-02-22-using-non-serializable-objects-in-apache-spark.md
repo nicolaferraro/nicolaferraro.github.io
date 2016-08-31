@@ -2,6 +2,8 @@
 title:  "Using Non-Serializable Objects in Apache Spark"
 date:   2016-02-22 17:29:32 +0200
 tags: [Apache Spark, Scala]
+header:
+    image: post-logo-spark.png
 ---
 Anyone who starts writing applications for Apache Spark encounters immediately an infamous exception...
 

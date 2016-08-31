@@ -2,6 +2,8 @@
 title:  "Strategy Pattern using CDI"
 date:   2016-02-24 17:29:32 +0200
 tags: [CDI, Design Pattern, Java EE]
+header:
+    image: post-logo-java-ee.png
 ---
 The strategy pattern is one of the most famous patterns by the GoF and, for sure, one of the most useful in the Java EE world. 
 Implementing it using Context and Dependency Injection (CDI) may appear difficult, but it’s just a matter of following some simple steps.

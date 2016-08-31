@@ -2,6 +2,8 @@
 title:  "Spash - Organizing your Big Data with SSH and Bash"
 date:   2016-04-16 17:29:32 +0200
 tags: [Apache Hadoop, Apache Spark, Bash, HDFS, Spash]
+header:
+    image: post-spash-logo.png
 ---
 Spash is a command line tool for Big Data platforms that simulates a real Unix environment, 
 providing most of the commands of a typical Bash shell on top of YARN, HDFS and Apache Spark.
