@@ -35,7 +35,7 @@ the-bot-id
 Just replace “the-bot-name” with a friendly name for your bot and “the-bot-id” with the unique name
 (use your fantasy, a lot of names are already taken). Here I attach two screenshots to show the creation of a bot.
 
-| ![Bot Creation](/images/telegram-1.png){:width="250px" .align-center} | ![Choosing the name](/images/telegram-2.png){:width="250px" .align-center}
+| ![Bot Creation](/images/telegram-1.jpg){:width="250px" .align-center} | ![Choosing the name](/images/telegram-2.jpg){:width="250px" .align-center}
 
 You need to annotate the authorization token given by the @BotFather in the last message.
 It is the key that lets your application act as the Bot (don’t try using the one in the picture, I revoked it :D).
