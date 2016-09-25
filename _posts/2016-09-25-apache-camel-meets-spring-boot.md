@@ -23,7 +23,7 @@ to quickly create applications integrated with the popular messaging app.
 
 A Camel Spring-Boot application now automatically provides reliable health checks at the endpoint `/health`, 
 leveraging the Spring-Boot actuator module. 
-This is a fundamental requirement for any microservice living in a cloud environment, because it allows the cloud provider (eg. Kubernetes) 
+This is a fundamental requirement for any microservice living in a cloud environment, because it allows the cloud platform (eg. Kubernetes) 
 to detect any anomaly and take corrective actions. 
 
 Indeed, one of the big news in the context of Microservices is that much effort has been made to improve Camel's compatibility with **Spring-Boot**.
@@ -75,7 +75,7 @@ This helps configuring the application easily, using the `application.properties
 
 A related feature that spring-boot offers out of the box is the possibility to override such configuration using environment variables or
 Java options. This is a great feature when you plan to run the application in a cloud platform like **Kubernetes** or **Openshift**,
-since you can exploit it to override some environment related settings using environment variables set up by the cloud provider automatically (eg. external services).
+since you can exploit it to override some environment related settings using environment variables set up by the cloud platform automatically (eg. external services).
 A Kunernetes' **ConfigMap** can also be bound to environment variables, providing a way to inject external configuration into the application.
 
 Trends are changing but camels are creatures that can adapt well to every environment! 
