@@ -1,7 +1,7 @@
 ---
 title:  "Apache Camel meets Spring-Boot"
-modified: 2016-09-23 23:00:00 +0200
-last_modified_at: 2016-09-23 23:00:00 +0200
+modified: 2016-09-25 14:00:00 +0200
+last_modified_at: 2016-09-25 14:00:00 +0200
 tags: [Apache Camel, JBoss Fuse, Microservices, Spring Boot]
 categories: [Dev]
 header:
