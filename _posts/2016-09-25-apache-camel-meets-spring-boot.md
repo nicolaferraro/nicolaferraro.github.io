@@ -26,7 +26,7 @@ leveraging the Spring-Boot actuator module.
 This is a fundamental requirement for any microservice living in a cloud environment, because it allows the cloud provider (eg. Kubernetes) 
 to detect any anomaly and take corrective actions. 
 
-Indeed, one of the big news in the context of Microservices is that much effort has been made to improve its compatibility with **Spring-Boot**.
+Indeed, one of the big news in the context of Microservices is that much effort has been made to improve Camel's compatibility with **Spring-Boot**.
 
 Spring-Boot is one of the top trending frameworks in the *Microservices* era,
 one of the fundamental building blocks for creating cloud enabled applications, at least in the Java universe.
