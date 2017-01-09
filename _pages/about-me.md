@@ -3,7 +3,9 @@ title: "About me"
 permalink: /about-me/
 ---
 
-![Red Hat Logo](/images/red-hat-logo.png) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![Apache Software Foundation Logo](/images/asf-logo.png)  
+![Red Hat Logo](/images/red-hat-logo.png) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![Apache Software Foundation Logo](/images/asf-logo.png)
+
+![I am speaking at Voxxed Days Bucharest - March 10th, 2017](/images/conf-voxxed-bucharest-2017.png)
 
 I’m a senior software engineer at Red Hat, writing open source software for fun. They also pay me for that.
 
