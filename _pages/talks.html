@@ -1,0 +1,19 @@
+---
+layout: archive
+author_profile: true
+header:
+  overlay_image: header-default.jpg
+  overlay_filter: 0.5
+excerpt: "Yet another software developer."
+permalink: /talks/
+---
+
+<h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].talks | default: "My Talks" }}</h3>
+
+<div class="grid__wrapper">
+  {% for post in site.posts %}
+    {% if post.categories contains "Talks" %}
+      {% include archive-single.html type="grid" %}
+    {% endif %}
+  {% endfor %}
+</div>

@@ -5,13 +5,12 @@ permalink: /about-me/
 
 ![Red Hat Logo](/images/red-hat-logo.png) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![Apache Software Foundation Logo](/images/asf-logo.png)
 
-![I am speaking at Voxxed Days Bucharest - March 10th, 2017](/images/conf-voxxed-bucharest-2017.png)
-
 I’m a senior software engineer at Red Hat, writing open source software for fun. They also pay me for that.
 
-I contribute particularly in projects related to JBoss Fuse: Apache Camel, Apache Karaf, Apache ActiveMQ, Fabric8, hawt.io, OpenShift.
+I contribute mainly on [Apache Camel](https://github.com/apache/camel) and the development tools of [Fabric8](https://github.com/fabric8io/fabric8) 
+for building applications on [Kubernetes](https://github.com/kubernetes/kubernetes) and [Openshift](https://github.com/openshift/).
 
-I’m passionate about Apache Spark and wrote some libraries based on it.
+I’m passionate about Apache Spark and wrote some libraries for it.
 
 * [Spark-HBase-Connector](https://github.com/nerdammer/spark-hbase-connector): to let Spark interact with Apache HBase with ease.
 * [Spash](https://github.com/nerdammer/spash): a Bash-like console to interact with a Big Data cluster.
