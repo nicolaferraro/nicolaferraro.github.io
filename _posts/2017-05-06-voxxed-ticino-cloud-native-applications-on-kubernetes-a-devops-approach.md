@@ -1,7 +1,7 @@
 ---
 title:  "Cloud Native Applications on Kubernetes: a DevOps Approach"
 modified: 2017-05-08 12:00:00 +0200
-last_modified_at: 2017-05-08 12:00:00 +0200
+last_modified_at: 2017-05-11 11:00:00 +0200
 tags: [Fabric8, Kubernetes, Openshift, DevOps, Cloud Native]
 categories: [Talks]
 read_time: false
@@ -22,3 +22,7 @@ The **slides are in English**, but the talk's **abstract is in Italian** (that i
 > Kubernetes, inoltre, è in grado di fornire questi servizi a qualsiasi tipo di applicazione: dal front-end web Node.js alle applicazioni Big Data sviluppate con Apache Spark!
 >  
 > In questo talk vedrete gli aspetti più importanti dell’architettura di Kubernetes e le principali risorse che la piattaforma mette a disposizione. Vi saranno mostrati alcuni metodi pratici per sviluppare e distribuire applicazioni su Kubernetes e Openshift Origin (“Kubernetes on steroids” di Red Hat). Attraverso gli strumenti di sviluppo del progetto Fabric8, vedrete inoltre come sia possibile applicare delle pratiche DevOps, quali continuous integration e continuous delivery, per creare applicazioni cloud sempre più robuste e automatizzarne il processo di rilascio.
+
+And here's the recording (Italian):
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dqgFDduVS9Q" frameborder="0" allowfullscreen></iframe>
