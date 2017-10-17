@@ -1,7 +1,7 @@
 ---
 title:  "Creating Clustered Singleton Services on Kubernetes"
 modified: 2017-10-17 08:50:00 +0200
-last_modified_at: 2017-10-17 08:50:00 +0200
+last_modified_at: 2017-10-17 15:00:00 +0200
 tags: [Kubernetes, Openshift, Apache Camel, JBoss Fuse, Spring-Boot, Java]
 categories: [Dev]
 header:
@@ -64,7 +64,7 @@ One of the improvement introduced in Camel 2.20 is the new **Camel Cluster Servi
 used to **receive simple notifications when your specific instance of a service becomes the leader/master of the whole cluster**.
 The cluster here is an abstract term: you define it. But often in Kubernetes/Openshift, a cluster is made by all the pods that compose the same deployment.
 
-Camel supports multiple cluster services: atomix, consul, file, **kubernetes** and zookeeper. The kubernetes cluster service is just one of them and we'll use it to create a clustered singleton easily.
+Camel supports multiple cluster services: atomix, consul, file, **kubernetes** and zookeeper (and also jgroups, added at the last minute by Andrea Tarocci). The kubernetes cluster service is just one of them and we'll use it to create a clustered singleton easily.
 
 ## I've seen this before... 
 
