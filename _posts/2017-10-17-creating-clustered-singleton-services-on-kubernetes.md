@@ -1,7 +1,7 @@
 ---
 title:  "Creating Clustered Singleton Services on Kubernetes"
 modified: 2017-10-17 08:50:00 +0200
-last_modified_at: 2017-10-17 15:00:00 +0200
+last_modified_at: 2017-10-28 11:00:00 +0200
 tags: [Kubernetes, Openshift, Apache Camel, JBoss Fuse, Spring-Boot, Java]
 categories: [Dev]
 header:
@@ -22,7 +22,13 @@ Think to a common scenario where you have an application running on Openshift wi
 Suppose that you want to do **scheduled operations on a database**. For sure, you don't want all the pods of the same application do the same batch operation together.
 
 For this task there are Kubernetes `CronJob` resources, but if you don't want to *start a different pod for every task you create*, they are not the perfect solution.
-`CronJob` resources require also some additional effort from a management point of view.
+Think to the case where you need to schedule 10 different jobs. `CronJob` resources require some additional effort from a management point of view that you may not want to spend.
+
+There are also many cases where you need to access your core business resources in the job, so if you package the scheduled operation into a external resource, you then need
+a way to call your business logic from outside.
+
+Separating your application into multiple services is a core principle of the microservices architecture, but
+you should *split your business logic according to domain rules, not technical reasons*.
 
 You may want to schedule tasks in your application. E.g. in spring-boot you can use the `@Scheduled` annotation:
 
@@ -44,14 +50,30 @@ But if you do this, each running pod will call it's `doTask` method. And you don
 Suppose that you need to **poll data from a remote REST API** and process them. But you **cannot do it concurrently**, because the API supports a **single consumer**.
 For example, [Telegram](https://core.telegram.org/bots/api) (the popular messaging app) has a polling api that does not support multiple consumers on the same chat id.   
 
-You can run another pod that consumes data from Telegram and push messages to a queue/topic. Or, if you had the possibility to run a singleton service, you could do it from the same app.
+The first solution you may think about is running another pod on a deployment with `replicas=1`. It will consume data from Telegram and push messages to a queue/topic.
+
+But is `replicas=1` **equivalent to singleton** in the Kubernetes world? **NO!**
+
+Kubernetes will try to reach the goal of always having a single instance of your application, but *that is a target, not an invariant*.
+There are tons of situations where you can have multiple instances of your application, even if you asked for a single one.
+For example, in case of network partition between a node that run your pod and the Kubernetes API server, Kubernetes
+can decide (after a timeout) that the node is no more ready and reschedule the pod on another node: the result is 2 pods running concurrently, 
+even if you asked for one.
+
+These situations are common in case of failure of some pieces of the infrastructure. If having a **singleton** instance of a service is a requirement, you cannot rely on the `replicas=1` setting.
+
+You now may think that `StatefulSets` solve the situation, but (**first**) you end up running a stateless application on a stateful container model, 
+with its limitations (e.g. missing rolling upgrades, limited auto-scalability, limited...).
+And (**second**), `StatefulSets` [without fencing do not solve the problem: the service is not guaranteed to be singleton](https://github.com/kubernetes/community/blob/18958f82567f74c7573b40647a3df059f831bc53/contributors/design-proposals/storage/pod-safety.md).
+ 
 
 ### Scenario 3
 
 Suppose that you want to expose multiple istances of your REST services, but you want that certain operations are **executed in serial order by a single piece of code**.
 
-You have multiple instances, so you need to push data e.g. to a messaging broker and **another pod (or deployment with replicas=1)** would process them.
-But if you had a **clustered singleton** feature, you could do it in the same app.
+Setting `replicas=1` does not solve the problem, as you've seen in scenario 2. So, how will you do?
+
+You can use a **clustered singleton**.
  
 Now use your imagination. There are a lot of other cases...
 
@@ -205,7 +227,7 @@ you'll see that "Hello World!" is printed continuously in **only one pod**.
 ## Where's the magic (implementation details)?
 
 Leader Election is a special kind of consensus in distributed systems and you know that consensus is hard to achieve.
-Fortunately Openshift and Kubernetes run a instance of Etcd and *Etcd is one of the few distributed datastores that implement Raft/Paxos correctly*.
+Fortunately Openshift and Kubernetes run a instance of Etcd and [Etcd implements Raft and takes consistency very seriously](https://aphyr.com/posts/316-call-me-maybe-etcd-and-consul).
 So the idea: **why don't we use Etcd to do leader election?**
 
 **Not so easy**. We cannot use Etcd directly inside Kubernetes, it's not there for application purposes. But we can use Kubernetes API to create/change 
