@@ -1,7 +1,7 @@
 ---
 title:  "Integrating Applications: The Reactive Way"
 modified: 2017-06-26 00:15:00 +0200
-last_modified_at: 2017-06-26 00:15:00 +0200
+last_modified_at: 2017-11-09 00:15:00 +0200
 tags: [Apache Camel, Eclipse Vert.x, Integration]
 categories: [Talks]
 read_time: false
