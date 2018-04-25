@@ -5,8 +5,8 @@ last_modified_at: 2018-04-23 11:00:00 +0200
 tags: [Apache Camel, Saga, Microservice, Spring-Boot, Java, JBoss Fuse, Narayana, LRA, Microprofile]
 categories: [Dev]
 header:
-    image: post-logo-camel.png
-    teaser: post-logo-camel.png
+    image: post-logo-apache-camel.png
+    teaser: post-logo-apache-camel.png
 ---
 A new enterprise integration pattern has been added to Apache Camel (2.21.0): the "Saga" pattern. This article will show you why, when and how to use it 
 in order to build robust and consistent applications in the cloud.
