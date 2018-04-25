@@ -1,7 +1,7 @@
 ---
 title:  "The Saga Pattern in Apache Camel"
-modified: 2018-04-23 11:00:00 +0200
-last_modified_at: 2018-04-23 11:00:00 +0200
+modified: 2018-04-25 07:00:00 +0200
+last_modified_at: 2018-04-25 07:00:00 +0200
 tags: [Apache Camel, Saga, Microservice, Spring-Boot, Java, JBoss Fuse, Narayana, LRA, Microprofile]
 categories: [Dev]
 header:
