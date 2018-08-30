@@ -1,0 +1,7 @@
+ports:
+  - port: 4000
+    protocol: "http"
+tasks:
+  - command: >
+      gem install bundle &&
+      bundle install
