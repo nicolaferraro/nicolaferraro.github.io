@@ -1,7 +1,7 @@
 ---
 title:  "The Saga Pattern in Apache Camel"
 modified: 2018-04-25 07:00:00 +0200
-last_modified_at: 2018-04-25 07:00:00 +0200
+last_modified_at: 2018-09-24 10:00:00 +0200
 tags: [Apache Camel, Saga, Microservice, Spring-Boot, Java, JBoss Fuse, Narayana, LRA, Microprofile]
 categories: [Dev]
 header:
@@ -21,7 +21,7 @@ logic into multiple autonomous services, usually communicating over HTTP.
 
 ## What do you mean by "Consistency"?
 
-There's not a unique definition of the term "consistency", but here I refer here to the widely accepted notion of
+There's not a unique definition of the term "consistency", but here I refer to the widely accepted notion of
 *"keeping the system as a whole in a valid state"* (and by *"valid"* I mean: *"respecting all business invariants"*).
 
 Let's try to make it more concrete with an *example*. Suppose you have designed a system for a travel agency 
