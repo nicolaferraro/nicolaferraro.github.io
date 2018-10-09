@@ -7,8 +7,13 @@ permalink: /about-me/
 
 I’m a senior software engineer at Red Hat, writing open source software for fun. They also pay me for that.
 
-I contribute mainly on [Apache Camel](https://github.com/apache/camel) and the development tools of [Fabric8](https://github.com/fabric8io/fabric8) 
-for building applications on [Kubernetes](https://github.com/kubernetes/kubernetes) and [Openshift](https://github.com/openshift/).
+I'm a committer and PMC member for the [Apache Camel](https://github.com/apache/camel). I'm also working 
+on the [Apache Camel K](https://github.com/apache/camel-k) cloud native platform.
+
+I work on the [Syndesis](https://syndesis.io) integration platform, based on Apache Camel.
+
+I work on the development tools of [Fabric8](https://github.com/fabric8io/fabric8),
+such as the [Fabric8 Maven Plugin](http://maven.fabric8.io) for building and running Java applications on [Kubernetes](https://github.com/kubernetes/kubernetes) and [Openshift](https://github.com/openshift/).
 
 I’m passionate about Apache Spark and wrote some libraries for it.
 
