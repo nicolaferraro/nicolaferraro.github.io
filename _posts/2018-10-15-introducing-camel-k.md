@@ -26,7 +26,7 @@ instructions: [**https://github.com/apache/camel-k**](https://github.com/apache/
 
 It's based on the "operator pattern" and leverages the [Operator SDK](https://github.com/operator-framework/operator-sdk) to perform
 operations on Kubernetes resources (we define some [custom resources](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) beside the standard ones).
-The operator is written in [Go](https://golang.org/) while the runtime used to run integrations is JVM based and leverages **all the 200+ components** already available 
+The operator is written in [Go](https://golang.org/) while the runtime is JVM based and leverages **all the 200+ components** already available 
 in Apache Camel.
 
 Like Kubernetes and OpenShift, also **Knative** will be a target platform in the near future.
