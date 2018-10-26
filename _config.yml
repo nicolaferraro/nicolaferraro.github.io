@@ -10,7 +10,7 @@ locale                   : "en"
 title                    : "Nicola Ferraro"
 title_separator          : "-"
 name                     : "Nicola Ferraro"
-description              : "Yet another software developer. Ideas are my own. I don't represent any company."
+description              : "Yet another software developer. Ideas are my own. I'm not my company."
 
 #url                      : "http://localhost:4000"
 url                      : "https://www.nicolaferraro.me"
@@ -86,7 +86,7 @@ analytics:
 author:
   name             : "Nicola Ferraro"
   avatar           : "bio-photo.jpg"
-  bio              : "Yet another software developer."
+  bio              : "Yet another software developer. Ideas are my own. I'm not my company."
   location         : "Rome, Italy"
   email            :
   uri              : "https://www.nicolaferraro.me/"
