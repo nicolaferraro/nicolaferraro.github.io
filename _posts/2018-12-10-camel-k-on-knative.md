@@ -14,7 +14,7 @@ and it's constantly gaining traction among developers. In Apache Camel K, we've 
 hard to leverage all the new possibilities that it provides and this article will show
 the results we've achieved so far.
 
-If you're not familiar with Camel K, you can [read the introductory blog post](/2018/10/15/introducing-camel-k/).
+If you're not familiar with [Camel K](https://github.com/apache/camel-k), you can [read the introductory blog post](/2018/10/15/introducing-camel-k/).
 Camel K provides a lot of new features when running on [Knative](https://github.com/knative/), but it also runs on plain **"vanilla" Kubernetes and OpenShift**.
 
 Let's start with the demo, then you can read the rest of the article to understand better what we're doing.
