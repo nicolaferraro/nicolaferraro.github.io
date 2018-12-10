@@ -1,7 +1,7 @@
 ---
 title:  "Camel K on Knative: Agile Integration becoming Serverless"
-modified: 2018-12-07 08:00:00 +0200
-last_modified_at: 2018-12-07 08:00:00 +0200
+modified: 2018-12-10 12:30:00 +0100
+last_modified_at: 2018-12-10 12:30:00 +0100
 tags: [Knative, Apache Camel, Openshift, Kubernetes, Serverless, JBoss Fuse]
 categories: [Dev]
 header:
