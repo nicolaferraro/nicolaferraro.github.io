@@ -27,24 +27,19 @@ Let's start with the demo, then you can read the rest of the article to understa
 
 Knative provides a collection of Kubernetes "Custom Resource Definitions" (CRD)
 together with related controllers that make it easier to build and deploy certain kind of applications  
-on Kubernetes. Those CRD are the building blocks I was mentioning in the intro and the kind of applications you run on 
-Knative are commonly referred as "serverless".
+on Kubernetes. 
 
-There's a **Knative Build** area that provides custom resources for **building services from source code**.
-Knative also allows to define services (not necessarily "functions") that **scale automatically** based on the load.
-These kinds of services can also **scale down to zero** when the load is absent for a certain period of time (**Knative Serving** area). 
-Scaling down to zero is an important feature of "serverless" applications, even if not a fundamental requirement. 
-But... do you know **what "serverless" means?**
+Knative building blocks can be roughly divided into **3 major areas**.
 
-**Serverless is** first of all **a billing model**: if you run a serverless application, **your bills depend on how much your customers use the application**.
-It means no more paying for "servers" (i.e. RAM or CPUs available to your virtual machines or containers) but using other metrics that are closer to the business value of your application.
-The need for scaling down to zero is a direct consequence (not the source) of the serverless billing model: **no usage = no money = better not using physical resources**.
-From a technical point of view, a "serverless technology" is anything that enables the "serverless" billing model.
-Here I'm going to talk about **technical aspects** only.
+The [**Knative Build area**](https://github.com/knative/build) provides custom resources for **building applications from source code**
+and producing container images.
 
-Knative provides the scale to zero feature out-of-the-box. And it gives you also auto-scaling, in case your application becomes the next big thing.
+The CRDs provided in [**Knative Serving area**](https://github.com/knative/serving) allow to define services that
+that **scale automatically** based on the load. Services can expose generic HTTP endpoints (such as REST): they are not necessarily "functions" (as in FaaS).
+These services can **scale up** when the load increases, but also **scale down to zero** when the load is absent for a certain amount of time.
+Services that are scaled down to zero don't consume physical resources and they are brought up again as soon as they need to serve a new request. 
 
-The last part of Knative I'm going to describe (and the most important one for our purposes) is **Knative Eventing**.
+The last part of Knative I'm going to describe (and the most important one for our purposes) is the [**Knative Eventing area**](https://github.com/knative/eventing).
 
 ## The Eventing Model
 
