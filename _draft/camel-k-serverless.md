@@ -15,7 +15,36 @@ The API gateway is one of the most important patterns for today's workloads, bec
 
 PICTURE
 
-The SYMBOL in the picture 
+The SYMBOL in the picture depicts services that can automatically scale thanks to Knative technology. As you see, the Camel K API gateway is able to scale automatically because it's rendered as a Knative serving service.
+
+Given two functions called fun-a and fun-b, the Camel K code to create the API gateway is:
+
+api.groovy
+'''
+rest().post("/path")
+  .to("knative:endpoint/fun-a")
+  .to("knative:endpoint/fun-b")
+'''
+
+The output of function fun-a is given as input of fun-b and the result of fun-b is returned to the REST API caller. Of course Camel is able to do any kind of transformation between those steps.
+
+The script can be simply deployed on Kubernetes with:
+'''
+kamel run api.groovy
+'''
+
+Just make sure you've previously install the camel k operator in the namespace DOC.
+
+Let's see now some other Knative building blocks in action.
+
+## Importer
+
+The importer pattern has a special role because importers are top level Knative resources (you may have heard about them, they were called Knative Sources in previous releases). An importer is simply a resource that brings events inside the serverless environment.
+
+This is where Apache Camel and Camel K shine, because you can really bring events from any external system.
+
+PICTURE
+
 
 
 
