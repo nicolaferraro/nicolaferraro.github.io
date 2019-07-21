@@ -9,6 +9,39 @@ I'd talk about "services" and not "functions", because this concept of function 
 
 Let's start with some patterns!
 
+## Importer
+
+The importer pattern has a special role because importers are top level Knative resources (you may have heard about them, they were called Knative Sources in previous releases). An importer is simply a resource that brings events inside the serverless environment.
+
+This is where Apache Camel and Camel K shine, because you can really bring events into knative from any known system.
+
+PICTURE
+
+TODO: the importer can have multiple kind of sinks. Link to doc about channels, broker etc.
+
+An importer usually creates a pod with the role of "receiver adapter" i.e. it converts data from the external system into cloud events that can be understood by Knative components. Sometimes, depending on the Camel components used in the importer route, Camel K can decide to create a Knative serving service to add autoscaling capabilities.
+
+For example, the following example creates an importer that transforms tweets into cloud events and send them to a Knative channel.
+
+'''
+from('twitter..')
+  .to('..')
+'''
+
+Being a Knative top level resource means that you can also create Camel based importers using Knative resources and inspect them using the 'kn' tool. For more information you can look at the DOC. In this article we'll focus on the Camel k way of creating integrations that serve as importers. Knative Camel resources also create Camel K integrations under the hood.
+
+## Exporter
+
+The Exporter is still not a Knative top level resource but you can create them directly with Camel K. An Exporter does the opposite of an importer: the Exporter exports data from knative to an external system, using the system's specific formats and protocols.
+
+PICTURE
+
+An example of Exporter is given by the following runnable snippet that forwards knative events to a Slack room.
+
+'''
+from...
+'''
+
 ## API Gateway
 
 The API gateway is one of the most important patterns for today's workloads, because it allows to give a REST shape to a series of functions, so that they can be consumed by client or web applications.
@@ -35,17 +68,36 @@ kamel run api.groovy
 
 Just make sure you've previously install the camel k operator in the namespace DOC.
 
-Let's see now some other Knative building blocks in action.
+TODO: move instructions to first pattern
 
-## Importer
+## Router
 
-The importer pattern has a special role because importers are top level Knative resources (you may have heard about them, they were called Knative Sources in previous releases). An importer is simply a resource that brings events inside the serverless environment.
-
-This is where Apache Camel and Camel K shine, because you can really bring events from any external system.
+The router is one of the most powerful integration patterns that camel provides. Actually Camel provides several versions of the router pattern, taking inspiration from the enterprise integration book, but their structure is similar. A router routes events to multiple destinations depending on some criteria.
 
 PICTURE
 
+The router described in the picture is a content-based router. It routes events to different destinations depending on some function of the headers/payload of the event itself.
+
+An example of content-based router can be implemented as follows with Camel K on Knative:
+
+'''
+From....
+'''
+
+## Splitter
+
+Aaah
+
+## Aggregator
+
+Aaaaah
+
+## Claim Check
+
+Sometimes you don't want to overload systems with huge binary files and you'd rather want to pass around lightweight events and load the big blobs only when they need to be used. This pattern takes ...
 
 
 
 Reminder: use advanced routing to let functions decide processing paths.
+Reminder: claim check
+Reminder: composition of multiple EIP into a single deployment
