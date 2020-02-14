@@ -1,7 +1,7 @@
 ---
 title:  "Creating Clustered Singleton Services on Kubernetes"
 modified: 2017-10-17 08:50:00 +0200
-last_modified_at: 2017-10-28 11:00:00 +0200
+last_modified_at: 2020-02-14 09:50:00 +0200
 tags: [Kubernetes, Openshift, Apache Camel, JBoss Fuse, Spring-Boot, Java]
 categories: [Dev]
 header:
@@ -64,12 +64,12 @@ These situations are common in case of failure of some pieces of the infrastruct
 
 You now may think that `StatefulSets` solve the situation, but (**first**) you end up running a stateless application on a stateful container model, 
 with its limitations (e.g. missing rolling upgrades, limited auto-scalability, limited...).
-And (**second**), `StatefulSets` [without fencing do not solve the problem: the service is not guaranteed to be singleton](https://github.com/kubernetes/community/blob/18958f82567f74c7573b40647a3df059f831bc53/contributors/design-proposals/storage/pod-safety.md).
+And (**second**) you cannot scale out the `StatefulSet` to multiple replicas, e.g. in order to speedup parts of your application while keeping only the REST-polling part singleton.
  
 
 ### Scenario 3
 
-Suppose that you want to expose multiple istances of your REST services, but you want that certain operations are **executed in serial order by a single piece of code**.
+Suppose that you want to expose **multiple istances** of your REST services, but you want that **certain operations are executed in serial order by a single piece of code**.
 
 Setting `replicas=1` does not solve the problem, as you've seen in scenario 2. So, how will you do?
 
