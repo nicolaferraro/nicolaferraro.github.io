@@ -5,7 +5,7 @@ permalink: /about-me/
 
 ![Red Hat Logo](/images/red-hat-logo.png) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![Apache Software Foundation Logo](/images/asf-logo.png)
 
-I’m a senior software engineer at Red Hat, writing open source software for fun. They also pay me for that.
+I’m a principal software engineer at Red Hat, writing open source software for fun. They also pay me for that.
 
 I'm a committer and PMC member on [Apache Camel](https://github.com/apache/camel). I'm also co-author of 
 [Apache Camel K](https://github.com/apache/camel-k): a lightweight platform for running Apache Camel integrations on Kubernetes and OpenShift 
