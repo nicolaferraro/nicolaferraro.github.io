@@ -20,7 +20,13 @@ with a lot of material that is automatically generated from the [Github reposito
 
 ## IDE integration
 
+Camel K development model is minimalistic: you need just to write a single file with your integration routes and you can immediately run it on any Kubernetes cluster. This way of defining things is common to many FaaS platforms (although Camel K is not properly a FaaS platform, but a lightweight integration platform) and it's technically difficult to provide IDE support, such as code completion and other utilities, to developers.
 
+But now we've it. The XXX team has created some cool extensions for VS Code that make the development experience with Camel K even more exciting. You don't need to remember the Camel DSL syntax, the IDE will give you suggestions and error highlighting.
+
+Code completion is not only limited to Java code, you also have suggestions and documentation out of the box when writing the Camel URIs and property files. And you can also run integrations and monitoring them using the IDE and nothing else.
+
+Just install the VS Code XXX pack to have all these cool features available.
 
 ## Serverless
 
