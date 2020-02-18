@@ -91,21 +91,71 @@ In Camel K 1.0.0-RC2 we support Camel Quarkus in JVM mode (just run integrations
 
 Every application running on Kubernetes needs to refer to a container image, but in Camel K you only provide the integration DSL and the operator does what it takes to run it, including building images directly on the cluster.
 
-The operator is so advanced that it manages a pool of reusable container images and if you start changing your integration code, it does try to reuse existing images from the pool rather than building a new one at each change, because it takes some time to build a new one. It was 1 minute at the beginning.
+The operator manages a pool of reusable container images and if you redeploy your integration code, it does try to reuse existing images from the pool rather than building a new one at each change, because it takes some time to build a new one. It was 1 minute at the beginning...
 
 But Kubernetes is moving so fast that you cannot solve a problem once and forget about it, you need to take care of it continuously. It happened that one of our third party dependencies that we used for doing builds in "vanilla Kube" has slowly degraded in performance up to a point where Camel K user experience was highly affected.
 
 We decided to switch to [Buildah](https://github.com/containers/buildah) by default to dramatically improve (again!) the build phase of Camel K integrations.
 
-Build time should be now (again!) under 1 minute in a standard scenario: the final target is to do builds in less than 30seconds (yes, it's possible).
+Build time should be now (again!) under 1 minute in a standard scenario: the final target is to do builds in less than 30seconds (yes, it's possible)!
 
 ## Better CLI
 
 The 'kamel' CLI is the main tool we provide to developers to run integrations. It's not mandatory: at the end, an Integration is a Kubernetes custom resources and you can manage it with any Kubernetes standard tool. But it adds a lot of value when used.
 
-For example, if you're a Camel Java developer it's not super easy to remember the boilerplate that you have to write in order to instantiate a Camel route builder. But 
+For example, if you're a Camel Java developer it's not super easy to remember the boilerplate that you have to write in order to instantiate a Camel route builder. Now you don't have to:
+
+'''
+kamel init Handler.java
+
+'''
+
+You get a Java file with all the boilerplate written for you and you just have to write your integration routes. It works also with all other languages: Groovy, XML, YAML, Kotlin and JavaScript.
+
+It's not just that. Often Camel K developers need to add a lot of command line options to configure the final behavior of their integration. For example, you may want to add a custom library with the '-d' option or configure a trait with '-t'.
+You now don't have to specify them every time, since you can "--save" the configuration:
+
+'''
+kamel run -d org.my:lib:1.0.0 -t prometheus.enabled=true Routes.java --save
+'''
+
+The 'save' option executes the command and also saves the options into a 'kamel-config.yaml' file, to reuse them next time you run the integration, simply writing:
+'''
+kamel run Routes.java
+'''
+
+The other options are taken automatically from the config. You should only remember you have one to understand what flags you're passing.
+
+The configuration is extremely useful in CI/CD scenarios because it provides a single place where you can store the whole configuration for all your integrations and reuse it across builds. If you're curious about the Ci/CD scenario, you can follow the [tutorial about Tekton pipelines](https://camel.apache.org/camel-k/latest/tutorials/tekton/tekton.html) to have more information.
 
 ## Master routes
 
+Good old Camel users know why and when master routes are useful, but for those who are not familiar with the term, I'm going to provide a brief explanation.
+
+Whenever you have an integration route that must be running, at any point in time, in at most one single Camel instance, you need to use a master route. Master routes can be declared by simply prefixing the consumer endpoint by the 'master' keyword and a name that will be used to create a named lock, e.g.
+
+'''
+from('master:lock:telegram:bots')
+  .to('log:info')
+'''
+
+It can be used to print all messages that are sent to your Telegram bot. Since the Telegram API support a single consumer only, you can guard the route with a master prefix to have the guarantee that the consumer will be only one.
+
+If you're wondering how there can be two instances running of you deploy one, well, think just to when you change your code and need to do a rolling update: for some time there'll be two pods running in parallel. Or you may want to embed a master route in a Knative autoscaling service: in this case, the service can scale autonomously based on the load, but there'll be only one telegram consumer at any time.
+
+Master routes **work out of the box** in Camel K, you just need to purlt a prefix in your endpoint uri. A leader election protocol based on Kubernetes APIs resource locks will be automatically configured for you!
+
 ## CronJobs
 
+All complex enough systems contain several scheduled jobs. This is especially true for that part of the system that handles integration with the outside.
+
+Ideally, if you need to execute a quick periodic task, say, every two seconds, you would startup an integration with a route based on timer to execute the periodic task. E.g.
+
+'''
+from("timer:task?period=2s")
+  .to(this, "businessLogic")
+'''
+
+But if the period between two executions, instead of 2 seconds ("2s" in the Camel URI) is 2 minutes ("2m") or 2 hours ("2h")?
+
+You can see that keeping everything running for a task....
