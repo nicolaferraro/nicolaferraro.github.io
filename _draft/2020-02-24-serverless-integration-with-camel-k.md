@@ -9,8 +9,8 @@ header:
     teaser: post-logo-apache-camel-k-native.png
 ---
 
-Apache Camel K is reaching its maturity with current 1.0.0-RC2 release, just one step away from 1.0.0.
-We've been working hard in the past months to add awesome features to Camel K, but also to improve its stability
+Apache Camel K is reaching maturity with current 1.0.0-RC2 release, just one step away from 1.0.0.
+We've been working hard in the last months to add more awesome features to Camel K, but also to improve its stability
 and performance. This post contains a list of cool stuff that you'll find in latest release.
 
 First of all, if you're living under a rock and it's the first time you hear about Camel K, 
@@ -25,15 +25,14 @@ run them on any Kubernetes cluster. This way of defining things is common to man
 but a lightweight *integration* platform) and it's technically difficult to provide IDE support, such as code completion and other utilities, 
 to developers.
 
-But now we've it. The Red Hat integration tooling team has created some cool extensions for VS Code that make the development experience 
+But now we've it. The Red Hat Integration tooling team has created some cool extensions for VS Code that make the development experience 
 with Camel K even more exciting. 
 You don't need to remember the Camel DSL syntax, the IDE will give you suggestions and error highlighting.
 
 Code completion works with Java code, but it's not only limited to it: you also have suggestions and documentation out of the box when writing the Camel URIs and property files.
 And you also have many options to run integrations and interact with them, all integrated in the IDE.
 
-Just install the VS Code [Extension Pack for Apache Camel by Red Hat](https://marketplace.visualstudio.com/items?itemName=redhat.apache-camel-extension-pack) to have all these 
-cool features available.
+Just install the VS Code [Extension Pack for Apache Camel by Red Hat](https://marketplace.visualstudio.com/items?itemName=redhat.apache-camel-extension-pack) to have all these  features available.
 
 ## Serverless
 
@@ -64,7 +63,7 @@ from('knative:event/device-event')
   .to('http://myhost/webhook/random-id')
 ``` 
 
-This integration scales automatically with the load because it is materialized into a [Knative Serving Service](https://knative.dev/docs/serving/spec/knative-api-specification-1.0/#service)
+This integration is configured to receive all events with *type=device-event* and scales automatically with the load because it is materialized into a [Knative Serving Service](https://knative.dev/docs/serving/spec/knative-api-specification-1.0/#service)
 and automatically [subscribed to the Eventing Broker via a Trigger](https://knative.dev/docs/eventing/broker-trigger/).
 It then receives a [CloudEvent](https://cloudevents.io/) when your IoT devices produce something and scales down to zero if there's no data coming.
 You just need to create it (as before, just `kamel run listener.groovy`), all the remaining configuration is 
@@ -80,11 +79,13 @@ In Camel K you don't have this distinction: the Route is the fundamental buildin
 
 ## Fast startup and low memory 
 
-We cannot say we're serverless without mentioning the work that we're doing in improving the performance of the Camel K integrations.
+We cannot say we're serverless without mentioning the work that we're doing in improving the performance of Camel K integrations.
 
+Starting from Camel 3.1.0 which is the default version used by Camel K 1.0.0-RC2, you can benefit from all improvements that have been made directly in the core to make it much more lightweight. Claus Ibsen has written a series of blog posts ([part 1](http://www.davsclaus.com/2020/01/apache-camel-31-more-camel-core.html?m=1), [part 2](http://www.davsclaus.com/2020/01/apache-camel-31-more-camel-core_30.html?m=1), [part 3](http://www.davsclaus.com/2020/02/apache-camel-31-more-camel-core.html?m=1)) to highlight what has been changed to reduce memory footprint and speedup the startup time, which is foundamental when running integrations in a serverless environment.
 
-Camel 3.1.0
-Quarkus
+But improvements are not only limited to the Camel core: we're doing much more. Several months ago we've started a new subproject of Apache Camel named ["Camel Quarkus"](https://github.com/apache/camel-quarkus) with the goal of seamlessly running integrations on top of the Quarkus framework. As you probably know, Quarkus is able to reduce the memory footprint of Java applications and improve the startup time, because it moves much startup logic to the build phase. And Quarkus applications can be also compiled to a native binary, allowing a dramatic improvements in performance.
+
+In Camel K 1.0.0-RC2 we support Camel Quarkus in JVM mode (just run integrations enabling the [Quarkus trait](https://camel.apache.org/camel-k/latest/traits/quarkus.html), with "kamel run -t quarkus.enabled=true myintegration.groovy"). The goal is to have also the in-cluster automatic native compilation soon, in one of next releases!
 
 ## Fast build times
 
