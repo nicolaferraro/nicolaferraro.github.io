@@ -91,15 +91,19 @@ In Camel K 1.0.0-RC2 we support Camel Quarkus in JVM mode (just run integrations
 
 Every application running on Kubernetes needs to refer to a container image, but in Camel K you only provide the integration DSL and the operator does what it takes to run it, including building images directly on the cluster.
 
-The operator is so advanced that it manages a pool of reusable container images and if you start changing your integration code, it does try to reuse existing images from the pool rather than building a new one at each change, because it takes some time to build a new one. It was 1 minute 
+The operator is so advanced that it manages a pool of reusable container images and if you start changing your integration code, it does try to reuse existing images from the pool rather than building a new one at each change, because it takes some time to build a new one. It was 1 minute at the beginning.
 
 But Kubernetes is moving so fast that you cannot solve a problem once and forget about it, you need to take care of it continuously. It happened that one of our third party dependencies that we used for doing builds in "vanilla Kube" has slowly degraded in performance up to a point where Camel K user experience was highly affected.
 
 We decided to switch to [Buildah](https://github.com/containers/buildah) by default to dramatically improve (again!) the build phase of Camel K integrations.
 
-Build time should be now (again!) under 1 minute in a standard scenario: the goal is to do builds in less than 30seconds 
+Build time should be now (again!) under 1 minute in a standard scenario: the final target is to do builds in less than 30seconds (yes, it's possible).
 
 ## Better CLI
+
+The 'kamel' CLI is the main tool we provide to developers to run integrations. It's not mandatory: at the end, an Integration is a Kubernetes custom resources and you can manage it with any Kubernetes standard tool. But it adds a lot of value when used.
+
+For example, if you're a Camel Java developer it's not super easy to remember the boilerplate that you have to write in order to instantiate a Camel route builder. But 
 
 ## Master routes
 
