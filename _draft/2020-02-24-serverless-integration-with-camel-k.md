@@ -1,8 +1,8 @@
 ---
-title:  "Serverless Integration with Camel K"
-modified: 2020-02-24 12:30:00 +0100
-last_modified_at: 2020-02-24 12:30:00 +0100
-tags: [Knative, Apache Camel, Openshift, Kubernetes, Serverless, JBoss Fuse]
+title:  "Camel K is now GA"
+modified: 2020-05-15 12:30:00 +0100
+last_modified_at: 2020-05-15 12:30:00 +0100
+tags: [Apache Camel, Openshift, Kubernetes, Knative, Serverless, JBoss Fuse]
 categories: [Dev]
 header:
     image: post-logo-apache-camel-k-native.png
@@ -152,11 +152,11 @@ All complex enough systems contain several scheduled jobs. This is especially tr
 Ideally, if you need to execute a quick periodic task, say, every two seconds, you would startup an integration with a route based on timer to execute the periodic task. E.g.
 
 '''
-from("timer:task?period=2s")
+from("timer:task?period=2000")
   .to(this, "businessLogic")
 '''
 
-But if the period between two executions, instead of 2 seconds ("2s" in the Camel URI) is 2 minutes ("2m") or 2 hours ("2h")?
+But if the period between two executions, instead of 2 seconds ("2000" in the Camel URI, which is measured in milliseconds) is 2 minutes ("120000") or 2 hours ("7200000")?
 
 You can see that keeping a container with a JVM running for a task that should be executed once every two minutes may be overkill. We live in a time where resources such as memory and CPU are really valuable.
 
@@ -166,3 +166,28 @@ There are cases when you don't want this feature to be enabled, for example, whe
 
 The Cron feature does not only work with the "timer" component. We've also added a "cron" component to Camel 3.1 that works really well in combination with the cron trait.
 
+So you can also write the cron expression in the route directly:
+
+'''
+from("cron:job?schedule=0/5+*+*+*+?")
+  .to(this, "businessLogic")
+
+'''
+
+In this case, a new pod with a JVM is started every 5 minutes to execute your scheduled task.
+
+## Transparency
+
+Camel K does a lot of work for you when you run your integration code in the cluster and it's possible that you put some errors in the code that can block the deployment process. We've added a lot of visibility on the deployment process that now communicates with the users via Kubernetes events that are printed to the console when you use the CLI.
+
+This way you're always notified of problems in the code and you can better understand what to fix to make your integration run.
+
+## Future
+
+We've reached version 1.0.0 and this is a great milestone for us. But we are not going to stop now: we've big plans for the future and we'll continue to develop awesome new features.
+
+We need your help to improve Camel K and we love contributions!
+
+Join us on:
+- Gutter: 
+- GitHub: https://github.com/apache/camel-k
