@@ -281,7 +281,7 @@ defaults:
       related: true
       header:
         overlay_image: images/header-default.jpg
-        overlay_filter: 0.5
+        overlay_filter: 0.2
   # _pages
   - scope:
       path: ""
