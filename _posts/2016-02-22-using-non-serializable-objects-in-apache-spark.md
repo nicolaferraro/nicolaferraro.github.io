@@ -5,8 +5,8 @@ last_modified_at: 2016-08-31 12:00:00 +0200
 tags: [Apache Spark, Scala]
 categories: [Dev]
 header:
-    image: post-logo-spark.png
-    teaser: post-logo-spark.png
+    image: images/post-logo-spark.png
+    teaser: images/post-logo-spark.png
 ---
 Anyone who starts writing applications for Apache Spark encounters immediately an infamous exception...
 

@@ -6,8 +6,8 @@ tags: [Fabric8, Kubernetes, Openshift, DevOps, Cloud Native]
 categories: [Talks]
 read_time: false
 header:
-    image: conf-voxxed-ticino-2017.png
-    teaser: conf-voxxed-ticino-2017.png
+    image: images/conf-voxxed-ticino-2017.png
+    teaser: images/conf-voxxed-ticino-2017.png
 ---
 I've talked at **Voxxed Days Ticino 2017** about building Cloud Native applications on Kubernetes and Openshift.
 

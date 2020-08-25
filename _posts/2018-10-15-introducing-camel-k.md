@@ -5,8 +5,8 @@ last_modified_at: 2018-10-15 15:00:00 +0200
 tags: [Apache Camel, Openshift, Kubernetes, Knative, Serverless, JBoss Fuse]
 categories: [Dev]
 header:
-    image: post-logo-apache-camel-d.png
-    teaser: post-logo-apache-camel-d.png
+    image: images/post-logo-apache-camel-d.png
+    teaser: images/post-logo-apache-camel-d.png
 ---
 Just few months ago, we were discussing about a new project that we could start as part 
 of Apache Camel. A project with the potential to change the way people deal with integration.

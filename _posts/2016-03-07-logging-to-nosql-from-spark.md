@@ -5,8 +5,8 @@ last_modified_at: 2016-08-31 12:00:00 +0200
 tags: [Apache Log4j, Apache Phoenix, Apache Spark, Docker, Scala]
 categories: [Dev]
 header:
-    image: post-phoenix-logo.png
-    teaser: post-phoenix-logo.png
+    image: images/post-phoenix-logo.png
+    teaser: images/post-phoenix-logo.png
 ---
 Logging effectively is often a hard task in standard applications. But when the application runs in a distributed environment, for instance, a Spark job in a big YARN cluster, 
 it becomes ten times harder.

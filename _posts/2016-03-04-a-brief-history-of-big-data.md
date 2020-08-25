@@ -6,8 +6,8 @@ tags: [Apache Flume, Apache Hadoop, Apache HBase, Apache Hive, Apache Pig, Apach
 categories: [Talks]
 read_time: false
 header:
-    image: post-logo-hadoop.png
-    teaser: post-logo-hadoop.png
+    image: images/post-logo-hadoop.png
+    teaser: images/post-logo-hadoop.png
 ---
 Why everybody talks about Big Data? Where does Hadoop come from? Which steps led to the diffusion of Spark? What’s next?
 

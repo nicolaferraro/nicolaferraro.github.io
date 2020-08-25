@@ -5,8 +5,8 @@ last_modified_at: 2016-09-25 14:00:00 +0200
 tags: [Apache Camel, JBoss Fuse, Microservices, Spring Boot]
 categories: [Dev]
 header:
-    image: post-logo-apache-camel.png
-    teaser: post-logo-apache-camel.png
+    image: images/post-logo-apache-camel.png
+    teaser: images/post-logo-apache-camel.png
 ---
 Next version of Apache Camel (2.18.0) is about to come with a long list of new features and components.
 

@@ -6,8 +6,8 @@ tags: [Fabric8, Kubernetes, Openshift, Radanalytics, Oshinko, Apache Spark]
 categories: [Talks]
 read_time: false
 header:
-    image: conf-voxxed-bucharest-2017.png
-    teaser: conf-voxxed-bucharest-2017.png
+    image: images/conf-voxxed-bucharest-2017.png
+    teaser: images/conf-voxxed-bucharest-2017.png
 ---
 I've talked at **Voxxed Days Buchares 2017** about how to apply some DevOps practices to Big Data applications by leveraging the power of Kubernetes and Openshift.
 

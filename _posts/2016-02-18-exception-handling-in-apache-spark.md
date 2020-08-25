@@ -5,8 +5,8 @@ last_modified_at: 2016-08-31 12:00:00 +0200
 tags: [Apache Spark, Scala]
 categories: [Dev]
 header:
-    image: post-logo-spark.png
-    teaser: post-logo-spark.png
+    image: images/post-logo-spark.png
+    teaser: images/post-logo-spark.png
 ---
 Apache Spark is a fantastic framework for writing highly scalable applications. 
 Data and execution code are spread from the driver to tons of worker machines for parallel processing. 

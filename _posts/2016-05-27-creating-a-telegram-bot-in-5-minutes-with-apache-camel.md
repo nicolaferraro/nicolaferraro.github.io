@@ -5,8 +5,8 @@ last_modified_at: 2016-11-04 09:00:00 +0100
 tags: [Apache Camel, JBoss Fuse, Microservices, Spring Boot, Telegram]
 categories: [Dev]
 header:
-    image: post-camel-telegram.png
-    teaser: post-camel-telegram.png
+    image: images/post-camel-telegram.png
+    teaser: images/post-camel-telegram.png
 ---
 Recently, I started contributing to open source software of the Apache Software Foundation and I developed
 **camel-telegram**, a component that allows camel based applications to exchange data using the Telegram messaging network.

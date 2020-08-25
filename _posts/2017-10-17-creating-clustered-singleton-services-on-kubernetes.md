@@ -5,8 +5,8 @@ last_modified_at: 2020-02-14 09:50:00 +0200
 tags: [Kubernetes, Openshift, Apache Camel, JBoss Fuse, Spring-Boot, Java]
 categories: [Dev]
 header:
-    image: post-logo-kubernetes.png
-    teaser: post-logo-kubernetes.png
+    image: images/post-logo-kubernetes.png
+    teaser: images/post-logo-kubernetes.png
 ---
 Creating a cluster of related containers is really easy with Openshift and Kubernetes.
 Resources such as *Deployment* support scaling to multiple instances natively. Services and load balancers are provided for free.

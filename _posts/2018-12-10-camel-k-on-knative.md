@@ -5,8 +5,8 @@ last_modified_at: 2018-12-10 12:30:00 +0100
 tags: [Knative, Apache Camel, Openshift, Kubernetes, Serverless, JBoss Fuse]
 categories: [Dev]
 header:
-    image: post-logo-apache-camel-k-native.png
-    teaser: post-logo-apache-camel-k-native.png
+    image: images/post-logo-apache-camel-k-native.png
+    teaser: images/post-logo-apache-camel-k-native.png
 ---
 
 Knative is an open source project for adding serverless building blocks on Kubernetes 

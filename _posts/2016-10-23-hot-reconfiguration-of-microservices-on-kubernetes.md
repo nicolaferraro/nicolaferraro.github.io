@@ -5,8 +5,8 @@ last_modified_at: 2016-10-23 11:00:00 +0200
 tags: [Spring Boot, Fabric8, Kubernetes, Apache Camel, Fuse]
 categories: [Dev]
 header:
-    image: post-logo-spring-boot.png
-    teaser: post-logo-spring-boot.png
+    image: images/post-logo-spring-boot.png
+    teaser: images/post-logo-spring-boot.png
 ---
 Spring Cloud Kubernetes is a fantastic project from the Fabric8 team that contains a lot of useful tools for building spring-boot based microservices. 
 Version _0.1.3_ includes a new feature that allows changing the configuration of a microservice at runtime using Kubernetes config maps.

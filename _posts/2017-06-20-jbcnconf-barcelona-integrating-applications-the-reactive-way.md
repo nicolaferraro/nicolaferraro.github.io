@@ -6,8 +6,8 @@ tags: [Apache Camel, Eclipse Vert.x, Integration]
 categories: [Talks]
 read_time: false
 header:
-    image: conf-jbcnconf-barcelona-2017.png
-    teaser: conf-jbcnconf-barcelona-2017.png
+    image: images/conf-jbcnconf-barcelona-2017.png
+    teaser: images/conf-jbcnconf-barcelona-2017.png
 ---
 It has been a pleasure to give a talk at JBCNConf, one of the biggest conferences about Java in Europe.
 
