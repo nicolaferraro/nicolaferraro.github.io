@@ -6,8 +6,8 @@ tags: [Apache Camel, Knative, Openshift, Kubernetes, Serverless, JBoss Fuse]
 categories: [Talks]
 read_time: false
 header:
-    image: images/post-logo-apache-camel-k-native.png
-    teaser: images/post-logo-apache-camel-k-native.png
+    image: images/conf-kubecon-eu-2020.png
+    teaser: images/conf-kubecon-eu-2020.png
 ---
 
 I've presented Apache Camel at the last Kubecon EU conference that took place on August 19th, 2020.
