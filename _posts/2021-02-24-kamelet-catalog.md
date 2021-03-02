@@ -12,6 +12,8 @@ header:
 
 > Note: this post has been published also in the [Apache Camel blog](https://camel.apache.org/blog/2021/02/Kamelet-Catalog/)
 
+![Kamelet Catalog](/images/post-kamelet-catalog-featured.png)
+
 We're starting a new initiative at Apache Camel to create a community-driven catalog of reusable Kamelets (*Camel* route snipp*ets*, i.e. connectors) that can be used to stream data from/to external systems into any platform powered by Apache Camel.
 
 The ["Apache Camel Kamelet catalog" is available here](/camel-kamelets/latest) and it already contains a collection of useful Kamelets: we would like to extend it with help of the community.
