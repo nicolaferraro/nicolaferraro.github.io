@@ -26,7 +26,7 @@ Suppose you're working on an integration problem and you've designed your route 
 import org.apache.camel.Header;
 import org.apache.camel.builder.RouteBuilder;
 
-public class Flacky extends RouteBuilder {
+public class Flaky extends RouteBuilder {
   @Override
   public void configure() throws Exception {
 
@@ -53,7 +53,7 @@ This is a simple route that every 5 seconds builds a payload and sends it to a H
 You can run it with:
 
 ```
-kamel run Flacky.java
+kamel run Flaky.java
 ```
 
 Once it starts, you notice that there's an issue in the way the payload is built, 
@@ -61,7 +61,7 @@ since the output signals an error in the first exchange.
 
 ```
 [1] 2020-11-30 09:22:02,377 WARN  [org.apa.cam.com.tim.TimerConsumer] (Camel (camel-1) thread #0 - timer://clock) Error processing exchange. Exchange[746A22E1144A36D-0000000000000000]. Caused by: [java.lang.ArithmeticException - / by zero]: java.lang.ArithmeticException: / by zero
-[1]     at Flacky.createPayload(Flacky.java:18)
+[1]     at Flaky.createPayload(Flaky.java:18)
 [1]     at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 [1]     at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 [1]     at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -96,17 +96,17 @@ integration and also establishing a secure tunnel to let your IDE connect to the
 To switch to the debug mode, just run:
 
 ```
-kamel debug flacky
+kamel debug flaky
 ```
 
-Where `flacky` is just the name of the integration. This is an example of output:
+Where `flaky` is just the name of the integration. This is an example of output:
 
 ```
-$ kamel debug flacky
-Enabling debug mode on integration "flacky"...
+$ kamel debug flaky
+Enabling debug mode on integration "flaky"...
 Forwarding from 127.0.0.1:5005 -> 5005
 Forwarding from [::1]:5005 -> 5005
-[1] Monitoring pod flacky-76f67fb58-rk8g8
+[1] Monitoring pod flaky-76f67fb58-rk8g8
 [1] exec java -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=*:5005 -cp ./resources:[...] io.quarkus.runner.GeneratedMain
 [1] Listening for transport dt_socket at address: 5005
 ```
