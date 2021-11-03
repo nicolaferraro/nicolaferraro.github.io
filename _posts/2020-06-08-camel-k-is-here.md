@@ -2,7 +2,7 @@
 title:  "Camel K 1.0 is here"
 modified: 2020-06-08T17:00:00+02:00
 last_modified_at: 2020-06-08T17:00:00+02:00
-tags: [Apache Camel, Knative, Openshift, Kubernetes, Serverless, JBoss Fuse]
+tags: [Apache Camel, Camel K, Knative, Openshift, Kubernetes, Serverless, JBoss Fuse]
 categories: [Dev]
 header:
     image: images/post-logo-apache-camel-k-native.png

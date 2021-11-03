@@ -2,7 +2,7 @@
 title:  "Kamelet Catalog"
 modified: 2021-02-24T02:00:00+02:00
 last_modified_at: 2021-02-24T02:00:00+02:00
-tags: [Apache Camel, Knative, Openshift, Kubernetes, Serverless, JBoss Fuse]
+tags: [Apache Camel, Kamelets, Camel K,  Knative, Openshift, Kubernetes, Serverless, JBoss Fuse]
 categories: [Dev]
 excerpt: "We're starting a new initiative at Apache Camel to create a community-driven catalog of reusable Kamelets"
 header:

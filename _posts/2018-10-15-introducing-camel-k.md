@@ -2,7 +2,7 @@
 title:  "Introducing Camel K"
 modified: 2018-10-15 15:00:00 +0200
 last_modified_at: 2018-10-15 15:00:00 +0200
-tags: [Apache Camel, Openshift, Kubernetes, Knative, Serverless, JBoss Fuse]
+tags: [Apache Camel, Camel K, Openshift, Kubernetes, Knative, Serverless, JBoss Fuse]
 categories: [Dev]
 header:
     image: images/post-logo-apache-camel-d.png

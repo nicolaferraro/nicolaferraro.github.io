@@ -2,7 +2,7 @@
 title:  "Serverless Integration on Kubernetes with Apache Camel K"
 modified: 2020-09-08T09:00:00+02:00
 last_modified_at: 2020-09-08T09:00:00+02:00
-tags: [Apache Camel, Knative, Openshift, Kubernetes, Serverless, JBoss Fuse]
+tags: [Apache Camel, Camel K, Knative, Openshift, Kubernetes, Serverless, JBoss Fuse]
 categories: [Talks]
 read_time: false
 header:
