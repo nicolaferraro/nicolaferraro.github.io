@@ -111,6 +111,80 @@ still merge carefully). Choices made:
 
 ---
 
+## Authoring a new post
+
+1. Create `src/content/posts/<slug>.md`. **The filename is the URL slug** — the
+   post is served at `/posts/<slug>` (no date in the path, unlike the old Jekyll
+   URLs). Use a short, lowercase, hyphenated slug.
+2. Add frontmatter (below), write the body in Markdown, preview with
+   `npm run dev` → http://localhost:4321/posts/<slug>.
+3. Commit and push to `main`; the workflow builds + deploys. Search index and
+   RSS update automatically.
+
+### Frontmatter
+
+Minimal new post (**no cover image** — that's the preference for new posts):
+```yaml
+---
+title: 'My Post Title'
+published: 2026-06-07
+tags: ['Apache Camel', 'Kubernetes']
+---
+```
+Fields (schema: `src/content.config.ts`):
+- `title` — **required**, string.
+- `published` — **required**, date `YYYY-MM-DD`. Controls ordering and the
+  displayed date (it does *not* affect the URL).
+- `description` — optional. Used for SEO/RSS and the post preview. **If omitted,
+  the first paragraph is used automatically** (~200 chars).
+- `tags` — optional string array. Reuse existing tags for consistency (see
+  below). The home page shows the 15 most-used.
+- `draft` — optional, default `false`. `true` hides the post from production
+  builds but still shows it under `npm run dev`.
+- `toc` — optional, default `true`. Set `false` to hide the table of contents.
+- `series` — optional string; groups related posts into a series.
+- `author` — optional; defaults to the site author.
+- `coverImage` — supported by the theme, but **omit it on new posts.**
+
+### Tags in use (reuse these; case-sensitive)
+Apache Camel, Kubernetes, JBoss Fuse, Openshift, Camel K, Knative, Serverless,
+Apache Spark, Kamelets, Spring Boot, Fabric8, Big Data, Cloud Native, Integration,
+Microservices, Java, Scala, Docker, DevOps. The `/tags` archive lists the full set.
+
+### Body format & syntax
+
+Plain **GitHub-flavored Markdown** (`.md`). Use `.mdx` only if you need to embed
+Astro/JSX components. MultiTerm extensions available:
+
+- **Headings** get auto anchor links; the TOC is built from them.
+- **Code blocks** (Expressive Code) — fence with a language, optional `title=`
+  and flags (line highlighting, diffs, line numbers, `wrap`):
+  ````md
+  ```python title="hello.py"
+  print("hi")
+  ```
+  ````
+  Docs: https://expressive-code.com/key-features/syntax-highlighting/ . Inline
+  code with backticks.
+- **Images** — two options:
+  - For an image-heavy post, make it a folder: `src/content/posts/<slug>/index.md`
+    and drop images alongside, referenced relatively (`![alt](./foo.png)`) so
+    Astro optimizes them.
+  - For the occasional image, put it in `public/images/` and reference
+    `/images/foo.png` (served as-is, not optimized).
+  - A title string becomes a caption: `![alt](./foo.png 'My caption')`. Append
+    `#pixelated` to the alt text for pixel art.
+- **Admonitions:** `:::note` / `:::tip` / `:::important` / `:::caution` /
+  `:::warning`, closed with `:::`.
+- **GitHub cards:** `::github{repo="apache/camel-k"}` or `::github{user="apache"}`.
+- **Character chats** (optional, playful): `:::owl` / `:::unicorn` / `:::duck`
+  blocks, optional `{align="right"}`.
+- **Math (KaTeX):** inline `$ ... $`, block `$$ ... $$`.
+- **Emoji:** GitHub shortcodes (`:rocket:`) or literal emoji.
+- **Tables, blockquotes, lists, strikethrough (`~~`), and raw HTML** all work.
+
+---
+
 ## Old-URL redirects (Jekyll → Astro)
 
 Old Jekyll permalinks were `/:year/:month/:day/:title/` (with trailing slash);
