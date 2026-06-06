@@ -5,7 +5,7 @@ title: About Me
 
 I'm a software engineer working on cloud infrastructure.
 
-Before all of that, I studied at the **University of Calabria**, where I earned a bachelor's and a master's degree, both with top marks and honours. It was a really fun time, and most of my friends are from those years, especially the ones who joined me for an Erasmus exchange in Aalborg, Denmark.
+Before all of that, I studied at the **University of Calabria**, where I earned a bachelor's and a master's degree, both with top marks and honours. It was a really fun time, and most of my best friends are from those years, especially the ones who joined me for an Erasmus exchange in Aalborg, Denmark.
 
 I started out as a consultant at **Engineering Ingegneria Informatica**, an Italian company. My first team was so small and so off the radar that we could do pretty much whatever we wanted, so we did some crazy things in production and even built our own web framework that was better than Spring (if you knew how to use it, though we never wrote the docs). Over time I grew into a team leader, and then led a larger group as I moved into **Big Data, Hadoop, and Apache Spark**.
 
