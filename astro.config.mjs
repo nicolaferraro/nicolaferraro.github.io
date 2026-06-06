@@ -28,6 +28,9 @@ import rehypePixelated from './src/plugins/rehype-pixelated' /* Custom plugin to
 export default defineConfig({
   site: siteConfig.site,
   trailingSlash: siteConfig.trailingSlashes ? 'always' : 'never',
+  // Emit `foo.html` instead of `foo/index.html` so the theme's no-trailing-slash
+  // links resolve cleanly on GitHub Pages (which serves `foo.html` at `/foo`).
+  build: { format: 'file' },
   prefetch: true,
   markdown: {
     remarkPlugins: [
