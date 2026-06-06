@@ -1,12 +1,12 @@
 ---
 title: 'Four Years at Redpanda'
 published: 2026-06-07
-description: 'After five years of silence, a look back at the leap I took to join Redpanda, the serverless team, and why I am writing again.'
+description: 'After four years of silence, a look back at the leap I took to join Redpanda, the serverless team, and why I am writing again.'
 tags: ['Redpanda', 'Serverless', 'Kafka', 'Go', 'Streaming', 'Cloud Native']
 toc: false
 ---
 
-I stopped writing here about five years ago. When I look at the dates on the posts below, it feels like another life. A lot has changed since then, both in my career and in the technical landscape around me. This post is my attempt to close that gap, at least a little.
+I stopped writing here about four years ago. When I look at the dates on the posts below, it feels like another life. A lot has changed since then, both in my career and in the technical landscape around me. This post is my attempt to close that gap, at least a little.
 
 ## The leap
 
@@ -34,7 +34,7 @@ So why leave. The world is changing, and Redpanda is changing with it. At some p
 
 ## Why I went quiet
 
-And then there is the writing. Five years of nothing.
+And then there is the writing. Four years of nothing.
 
 Part of it is laziness, and I will own that. But part of it is that the work did not lend itself to writing. What I built could help some customers, but most people would have no reason to care, and there was nothing they could go and try on their own, because the code was not public.
 
