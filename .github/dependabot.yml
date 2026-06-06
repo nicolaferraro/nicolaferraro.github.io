@@ -1,0 +1,33 @@
+version: 2
+updates:
+  # npm dependencies — batched into as few PRs as possible
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    groups:
+      # All minor/patch bumps (including grouped security fixes) land in ONE PR.
+      npm-minor-patch:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+      # Major bumps are also grouped together, but kept separate from the
+      # minor/patch PR so breaking changes can be reviewed deliberately.
+      npm-major:
+        patterns:
+          - "*"
+        update-types:
+          - "major"
+
+  # GitHub Actions used by the deploy workflow — batched into one PR.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
