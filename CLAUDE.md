@@ -118,7 +118,7 @@ filename slug.
 - `npm run build` → Astro build + `pagefind` index (postbuild). Local preview:
   `npm run dev` (http://localhost:4321).
 - **CI/CD:** `.github/workflows/astro.yml` builds and deploys to GitHub Pages.
-  The trigger branch was changed from `main` → **`master`** (this repo's default).
+  Triggers on **`main`** (the repo's default branch).
 - **Custom domain:** `public/CNAME` contains `www.nicolaferraro.me` (deploys
   with the artifact).
 
