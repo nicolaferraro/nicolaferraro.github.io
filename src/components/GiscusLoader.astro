@@ -59,7 +59,10 @@ const reactionsEnabled = giscusConfig.reactionsEnabled ? '1' : '0'
     script.setAttribute('data-emit-metadata', '0')
     // Setting this to 'bottom' doesn't work. Not sure why.
     script.setAttribute('data-input-position', 'top')
-    script.setAttribute('data-theme', `${origin}/giscus/${theme}.css`)
+    // Single-theme site: use giscus's built-in catppuccin_mocha theme.
+    // (The theme normally points giscus at a self-hosted CSS URL, but that
+    // can't be fetched from localhost and is unnecessary with one fixed theme.)
+    script.setAttribute('data-theme', 'catppuccin_mocha')
     script.setAttribute('data-lang', 'en')
     script.setAttribute('loading', 'lazy')
     script.crossOrigin = 'anonymous'
@@ -83,7 +86,7 @@ const reactionsEnabled = giscusConfig.reactionsEnabled ? '1' : '0'
       return
     }
     giscusFrame.contentWindow?.postMessage(
-      { giscus: { setConfig: { theme: `${origin}/giscus/${theme}.css` } } },
+      { giscus: { setConfig: { theme: 'catppuccin_mocha' } } },
       'https://giscus.app',
     )
   }

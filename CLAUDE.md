@@ -38,6 +38,19 @@ at build time:
 *Why:* the literal never updates. `getFullYear()` is evaluated during the
 build, so each deploy reflects the current year.
 
+### 4. `src/components/GiscusLoader.astro` — use giscus's built-in theme
+The theme points giscus at a self-hosted CSS URL (`${origin}/giscus/<theme>.css`).
+That URL can't be fetched from `localhost`, so comments render in giscus's
+default light theme (black text) during local dev. Since the site is locked to
+one theme, switched both `data-theme` (in `loadGiscus`) and the `updateTheme`
+`postMessage` to giscus's native theme:
+```diff
+- script.setAttribute('data-theme', `${origin}/giscus/${theme}.css`)
++ script.setAttribute('data-theme', 'catppuccin_mocha')
+```
+*Why:* giscus ships a native `catppuccin_mocha` theme that matches the site, so
+the self-hosted CSS is unnecessary and the localhost fetch problem disappears.
+
 ### 3. `astro.config.mjs` — `build.format: 'file'`
 Added inside `defineConfig`:
 ```js
