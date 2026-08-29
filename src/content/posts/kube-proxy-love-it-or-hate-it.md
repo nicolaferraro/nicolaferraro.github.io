@@ -30,7 +30,7 @@ nftables commits are atomic, and atomic means serialized. Every commit takes
 one global lock, `commit_mutex`, and holds it until the transaction finishes.
 
 ```text
-kubelet     waits on RTNL, listing interfaces for its node status
+kubelet     blocked on RTNL, doing its own network bookkeeping
   aws-cni   holds RTNL, waits on the nftables commit mutex
     nft     holds the commit mutex, deep inside nf_tables_bind_set
 ```
@@ -38,18 +38,23 @@ kubelet     waits on RTNL, listing interfaces for its node status
 RTNL is the one big lock the kernel puts around its network interface and
 routing tables. The CNI takes it because moving a veth between namespaces is
 an RTNL operation, and that same call fires `nf_tables_netdev_event`, which
-needs `commit_mutex`. So the CNI sits on RTNL waiting for a lock kube-proxy
-is holding, and kubelet queues behind it just to list interfaces.
+needs `commit_mutex`. That is what a stalled node showed: the CNI sitting on
+RTNL waiting for a lock kube-proxy held, and kubelet stuck behind it.
 
 kubelet never touches netfilter. It shares one lock with something that does,
 and that is enough to kill it.
 
 ## Why exactly one hour
 
-```go title="kubernetes/pkg/proxy/util/utils.go"
+```go title="pkg/proxy/util/utils.go"
 // FullSyncPeriod is iptables and nftables proxier full sync period
 FullSyncPeriod = 1 * time.Hour
 ```
+
+That is
+[`pkg/proxy/util/utils.go:41`](https://github.com/kubernetes/kubernetes/blob/v1.36.0/pkg/proxy/util/utils.go#L41-L42)
+in v1.36.0, and it is read once per sync in
+[`proxier.go:1079`](https://github.com/kubernetes/kubernetes/blob/v1.36.0/pkg/proxy/nftables/proxier.go#L1079).
 
 A compile-time constant, so no configuration flag changes it. The clock
 starts at node join, which is why the deaths line up with node age.
