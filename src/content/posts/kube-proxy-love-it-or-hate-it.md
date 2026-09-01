@@ -13,7 +13,7 @@ your attention. I have learned a lot more about it since.
 
 ## The setup
 
-EKS on AWS, Kubernetes v1.36, Ubuntu Noble, kube-proxy in `nftables` mode,
+EKS on AWS, Kubernetes v1.35, Ubuntu Noble, kube-proxy in `nftables` mode,
 IPv6-only, and a lot of Services.
 
 I picked nftables because by now it is the only mode with a future. iptables
@@ -52,9 +52,9 @@ FullSyncPeriod = 1 * time.Hour
 ```
 
 That is
-[`pkg/proxy/util/utils.go:41`](https://github.com/kubernetes/kubernetes/blob/v1.36.0/pkg/proxy/util/utils.go#L41-L42)
-in v1.36.0, and it is read once per sync in
-[`proxier.go:1079`](https://github.com/kubernetes/kubernetes/blob/v1.36.0/pkg/proxy/nftables/proxier.go#L1079).
+[`pkg/proxy/util/utils.go:41`](https://github.com/kubernetes/kubernetes/blob/v1.35.0/pkg/proxy/util/utils.go#L40-L41)
+in v1.35.0, and it is read once per sync in
+[`proxier.go:1122`](https://github.com/kubernetes/kubernetes/blob/v1.35.0/pkg/proxy/nftables/proxier.go#L1122).
 
 A compile-time constant, so no configuration flag changes it. The clock
 starts at node join, which is why the deaths line up with node age.
@@ -67,6 +67,23 @@ More cores do not help, because the sync loop is single-threaded: 32x the
 cores bought 1.29x. `mode: iptables` does not help either, because on Noble
 the `iptables` binary is `iptables-nft` and takes the same lock.
 
+## But 1.36 on new kernels should be faster
+
+Most of that cost is in the kernel, and
+[#135639](https://github.com/kubernetes/kubernetes/issues/135639) tracks real
+improvements to it: on a newer kernel the loop check that dominates a big
+transaction gets much cheaper. I run the Ubuntu EKS AMIs, and Canonical stops
+building them on Noble at 1.35, so my 1.36 nodes came up on Resolute: kernel
+7.0 and `nft` 1.1.6 instead of 6.x and 1.0.9.
+
+That is a newer kernel, a newer `nft` and a newer kube-proxy at once. But the
+full sync still runs every hour, **it still takes 12–20 minutes, the same as
+on 1.35**, and it still grows non-linearly with Service count. Those numbers
+come from a cluster built to measure sync speed, not a rebuild of the one that
+died, so I have not watched a node go `NotReady` on 1.36. If you have a busy
+1.36 cluster and the nerve to leave a node up for an hour, I would love to
+know what you see.
+
 ## Where I disagree with everyone
 
 Every comparison of kube-proxy modes ranks them by how fast a packet moves.
@@ -75,11 +92,10 @@ change, and the ranking stops looking so obvious.
 
 I have never run IPVS at this size, so I am not going to tell you it is
 better. But it updates one row of a hash table per Service, with no
-transaction and no global lock in the path. Its known problem is burning 65%
-of a core in userspace, which is CPU you can buy. nftables holds a global
-lock for a whole transaction, and kube-proxy fills that transaction with the
-entire ruleset once an hour. On a big cluster I honestly do not know which of
-those I would rather have, and I could not find anyone who has measured it.
+transaction and no global lock in the path, and its known problem is
+[userspace CPU](https://github.com/kubernetes/kubernetes/issues/135230),
+which is CPU you can buy. A global lock held for an hourly rewrite of the
+whole ruleset is not, and I could not find anyone who has measured the trade.
 
 nftables scales fine. The problem is rewriting a whole cluster's ruleset
 inside one globally locked transaction, on a fixed timer.
@@ -105,13 +121,13 @@ and stock is what most people are running.
 
 None of this is news upstream.
 [#135639](https://github.com/kubernetes/kubernetes/issues/135639) covered
-nftables sync performance and was addressed in v1.36, which is what this
-cluster runs. Whoever filed
+nftables sync performance and was addressed in v1.36. Whoever filed
 [#139513](https://github.com/kubernetes/kubernetes/issues/139513) measured
-sync time still growing super-linearly with Service count on v1.36.1, and
-[#139328](https://github.com/kubernetes/kubernetes/issues/139328) is still
-open on startup cost at scale. The mode is young, it is already better than
-what it replaces, and it is being improved in the open.
+sync time still growing super-linearly with Service count on v1.36.1, and the
+[patch that closed it](https://github.com/kubernetes/kubernetes/pull/140723)
+merged for 1.37: a Service with a single endpoint no longer gets its own
+verdict map, because adding a rule scans every map in the table. Let's hope
+that is enough.
 
 One binary, one DaemonSet, almost nothing to configure. That is why nobody
 looks at it, right up until the moment you have to.
